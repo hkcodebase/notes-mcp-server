@@ -23,7 +23,6 @@ services:
       - ./api:/app
       - ${NOTES_DIR:-./notes}:/notes:ro
       - chroma_data:/chroma_db
-      - embed_cache:/root/.cache/huggingface
     ports:
       - "8000:8000"
     depends_on:
@@ -44,4 +43,3 @@ services:
 
 volumes:
   chroma_data:
-  embed_cache:
