@@ -1,13 +1,4 @@
 services:
-  # Docker Model Runner — requires Docker Desktop 4.40+ with Model Runner enabled.
-  # Model is downloaded automatically on first run.
-  # Accessible inside containers at: http://model-runner.docker.internal/engines/llama.cpp/v1
-  llm:
-    provider:
-      type: model
-      options:
-        model: ${LLM_MODEL:-ai/gemma4}
-
   api:
     build:
       context: ./api
@@ -25,9 +16,6 @@ services:
       - chroma_data:/chroma_db
     ports:
       - "8000:8000"
-    depends_on:
-      llm:
-        condition: service_started
     restart: unless-stopped
 
   ui:
