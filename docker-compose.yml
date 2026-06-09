@@ -1,0 +1,47 @@
+services:
+  # Docker Model Runner — requires Docker Desktop 4.40+ with Model Runner enabled.
+  # Model is downloaded automatically on first run.
+  # Accessible inside containers at: http://model-runner.docker.internal/engines/llama.cpp/v1
+  llm:
+    provider:
+      type: model
+      options:
+        model: ${LLM_MODEL:-ai/gemma4}
+
+  api:
+    build:
+      context: ./api
+      dockerfile: Dockerfile
+    container_name: notes-api
+    environment:
+      NOTES_DIR: /notes
+      CHROMA_DIR: /chroma_db
+      LLM_BASE_URL: http://model-runner.docker.internal/engines/llama.cpp/v1
+      LLM_MODEL: ${LLM_MODEL:-ai/gemma4}
+      EMBEDDING_MODEL: all-MiniLM-L6-v2
+    volumes:
+      - ./api:/app
+      - ${NOTES_DIR:-./notes}:/notes:ro
+      - chroma_data:/chroma_db
+      - embed_cache:/root/.cache/huggingface
+    ports:
+      - "8000:8000"
+    depends_on:
+      llm:
+        condition: service_started
+    restart: unless-stopped
+
+  ui:
+    build:
+      context: ./ui
+      dockerfile: Dockerfile
+    container_name: notes-ui
+    ports:
+      - "3000:80"
+    depends_on:
+      - api
+    restart: unless-stopped
+
+volumes:
+  chroma_data:
+  embed_cache:

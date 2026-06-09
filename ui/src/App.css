@@ -1,0 +1,170 @@
+/* ── NAV ─────────────────────────────────────────── */
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 64px;
+}
+.nav-logo {
+  font-weight: 600;
+  font-size: 16px;
+  letter-spacing: 0.02em;
+}
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+}
+.nav-link {
+  font-size: 13px;
+  color: var(--muted);
+  background: none;
+  border: none;
+  padding: 4px 10px;
+  cursor: pointer;
+  transition: color 0.15s, background 0.15s;
+}
+.nav-link:hover,
+.nav-link.active {
+  background: var(--text);
+  color: var(--bg);
+}
+.theme-btn {
+  background: none;
+  border: 1px solid var(--border);
+  color: var(--muted);
+  font-size: 13px;
+  padding: 4px 8px;
+  cursor: pointer;
+  transition: color 0.15s, border-color 0.15s;
+}
+.theme-btn:hover { color: var(--text); border-color: var(--text); }
+
+/* ── STATS ───────────────────────────────────────── */
+.stats-row {
+  display: flex;
+  gap: 40px;
+  margin-bottom: 64px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--border);
+}
+.stat-item  { display: flex; flex-direction: column; }
+.stat-n     { font-size: 26px; font-weight: 600; letter-spacing: -0.02em; line-height: 1.2; }
+.stat-label { font-size: 12px; color: var(--muted); letter-spacing: 0.04em; }
+
+/* ── PANEL ───────────────────────────────────────── */
+.panel { margin-bottom: 72px; }
+.panel-subtitle { font-size: 13px; color: var(--muted); margin-bottom: 28px; max-width: 600px; }
+
+/* ── FORM ────────────────────────────────────────── */
+.field        { margin-bottom: 12px; }
+.field-row    { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-top: 12px; }
+.field-label  { font-size: 12px; color: var(--muted); letter-spacing: 0.06em; display: flex; align-items: center; gap: 10px; }
+.field-label input[type="number"] { width: 56px; }
+
+/* ── BUTTONS ─────────────────────────────────────── */
+.btn {
+  font-size: 13px;
+  background: none;
+  border: 1px solid var(--border);
+  color: var(--muted);
+  padding: 6px 14px;
+  cursor: pointer;
+  transition: background 0.12s, color 0.12s, border-color 0.12s;
+  white-space: nowrap;
+}
+.btn:hover:not(:disabled) { background: var(--text); color: var(--bg); border-color: var(--text); }
+.btn:disabled             { opacity: 0.4; cursor: not-allowed; }
+.btn-primary              { background: var(--text); color: var(--bg); border-color: var(--text); }
+.btn-primary:hover:not(:disabled) { opacity: 0.8; }
+
+/* ── ALERTS ──────────────────────────────────────── */
+.alert        { font-size: 13px; padding: 10px 14px; border: 1px solid var(--border); margin-top: 12px; color: var(--muted); }
+.alert-error  { border-color: var(--text); color: var(--text); }
+
+/* ── ANSWER ──────────────────────────────────────── */
+.answer-block   { border-top: 1px solid var(--border); padding-top: 24px; margin-top: 24px; }
+.answer-kicker  { font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-bottom: 10px; }
+.answer-text    { font-size: 14px; line-height: 1.9; white-space: pre-wrap; margin-bottom: 28px; }
+
+/* ── SOURCE ROWS ─────────────────────────────────── */
+.sources-kicker {
+  font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--muted); padding-bottom: 14px; border-bottom: 1px solid var(--border);
+}
+.source-row {
+  display: grid;
+  grid-template-columns: 32px 1fr auto;
+  column-gap: 20px;
+  padding: 18px 0;
+  border-bottom: 1px solid var(--border);
+  cursor: pointer;
+  transition: background 0.12s, padding 0.12s;
+}
+.source-row:first-of-type { border-top: 1px solid var(--border); }
+.source-row:hover {
+  background: var(--text); color: var(--bg);
+  padding-left: 10px; padding-right: 10px;
+  margin-left: -10px; margin-right: -10px;
+}
+.source-row:hover .source-num,
+.source-row:hover .source-meta,
+.source-row:hover .source-score,
+.source-row:hover .source-excerpt,
+.source-row:hover .source-arrow  { color: var(--bg); opacity: 0.55; }
+.source-row:hover .source-doc    { color: var(--bg); opacity: 1; }
+
+.source-num     { font-size: 13px; color: var(--muted); padding-top: 2px; }
+.source-body    { min-width: 0; }
+.source-doc     { font-weight: 500; margin-bottom: 3px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.source-meta    { font-size: 13px; color: var(--muted); margin-bottom: 4px; }
+.source-excerpt { font-size: 13px; color: var(--muted); display: none; margin-top: 8px; line-height: 1.7; white-space: pre-wrap; }
+.source-excerpt.open { display: block; }
+.source-right   { display: flex; flex-direction: column; align-items: flex-end; gap: 4px; padding-top: 2px; }
+.source-score   { font-size: 13px; color: var(--muted); white-space: nowrap; }
+.source-arrow   { font-size: 14px; color: var(--muted); }
+
+/* ── DOCUMENT LIST ───────────────────────────────── */
+.doc-row {
+  display: grid;
+  grid-template-columns: 32px 1fr;
+  column-gap: 20px;
+  padding: 18px 0;
+  border-bottom: 1px solid var(--border);
+  align-items: start;
+  transition: background 0.12s, padding 0.12s;
+}
+.doc-row:first-of-type { border-top: 1px solid var(--border); }
+.doc-row:hover {
+  background: var(--row-hover);
+  padding-left: 10px; padding-right: 10px;
+  margin-left: -10px; margin-right: -10px;
+}
+.doc-num  { font-size: 13px; color: var(--muted); padding-top: 2px; }
+.doc-body { min-width: 0; }
+.doc-name { font-weight: 500; margin-bottom: 3px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.doc-path { font-size: 13px; color: var(--muted); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+/* ── EMPTY ───────────────────────────────────────── */
+.empty { font-size: 13px; color: var(--muted); padding: 32px 0; }
+.empty code { font-size: 12px; background: var(--input-bg); padding: 2px 6px; border: 1px solid var(--border); }
+
+/* ── FOOTER ──────────────────────────────────────── */
+footer {
+  padding-top: 20px;
+  border-top: 1px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  font-size: 11.5px;
+  color: var(--muted);
+}
+
+/* ── RESPONSIVE ──────────────────────────────────── */
+@media (max-width: 560px) {
+  .nav-right { gap: 16px; }
+  .source-row { grid-template-columns: 24px 1fr auto; column-gap: 12px; }
+  .stats-row  { gap: 24px; }
+}
